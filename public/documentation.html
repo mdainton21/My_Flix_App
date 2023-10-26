@@ -8,11 +8,104 @@
 </head>
 
 <body>
-    <h1>My Flix Documentation</h1>
-    <p>This project is a web application that will provide users with information about movies,
-        directors, and genres. Users will also be able to sign up, log their personal information, 
-        and create a list of their favorites.
-    </p>
+  <h1>My Flix Documentation</h1>
+  <p>This project is a web application that will provide users with information about movies,
+    directors, and genres. Users will also be able to sign up, log their personal information,
+    and create a list of their favorites.
+  </p>
+  <table>
+    <tr>
+      <th>Request</th>
+      <th>Endpoint URL</th>
+      <th>Method Type</th>
+      <th>Body Data Format</th>
+      <th>Response Data Format</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <th>Get data on all movies</th>
+      <td>/movies</td>
+      <td>GET</td>
+      <td>N/A</td>
+      <td>A JSON object containing data on all the movies currently on the server</td>
+      <td>This request will respond with a list of all movies on the server, including all of their data such as title, description, genre, director, etc. </td>
+    </tr>
+    <tr>
+      <th>Get data on a specific movie</th>
+      <td>/movies/:title</td>
+      <td>GET</td>
+      <td>N/A</td>
+      <td>A JSON object containing data on the movie title selected</td>
+      <td>This request will respond with a list of data on the movie selected, listing data such as title, description, genre, director, etc. </td>
+    </tr>
+    <tr>
+      <th>Get data on a specific genre</th>
+      <td>/movies/genre/:genreName</td>
+      <td>GET</td>
+      <td>N/A</td>
+      <td>A JSON object containing data on the movie genre selected</td>
+      <td>This request will respond with a list of data on the genre selected, listing the genre and a description of it. </td>
+    </tr>
+    <tr>
+      <th>Get data on a specific director</th>
+      <td>/movies/directors/:directorName</td>
+      <td>GET</td>
+      <td>N/A</td>
+      <td>A JSON object containing data on the director selected</td>
+      <td>This request will respond with a list of data on the director selected, listing their name, birth year, and a short bio. </td>
+    </tr>
+    <tr>
+      <th>Add a new user</th>
+      <td>/users</td>
+      <td>POST</td>
+      <td>A JSON object formatted like so:<br>
+        {<br>
+          "name": <i>user's name</i><br>
+          "favoriteMovies": []<br>
+        }
+      </td>
+      <td>A JSON object containing the information entered, but now with a unique user id number. </td>
+      <td>This request will allow the user to enter a name and be given a unique id number for their account </td>
+    </tr>
+    <tr>
+      <th>Add a new favorite movie</th>
+      <td>/users/:id/:movieTitle</td>
+      <td>POST</td>
+      <td>N/A</td>
+      <td>A text response stating the movie has been added to the user's favorites </td>
+      <td>This request will allow the user to add movies to the "favoriteMovies" array linked to their personal id </td>
+    </tr>
+    <tr>
+      <th>Update a username</th>
+      <td>/users/:id</td>
+      <td>PUT</td>
+      <td>A JSON object formatted like so:<br>
+        {<br>
+          "name": <i>user's new username</i><br>
+          "favoriteMovies": []<br>
+        }
+      </td>
+      <td>A JSON object containing their account information, but now with their updated name. </td>
+      <td>This request will allow the user to enter a name that will replace their current username </td>
+    </tr>
+    <tr>
+      <th>Remove a favorite movie</th>
+      <td>/users/:id/:movieTitle</td>
+      <td>DELETE</td>
+      <td>N/A</td>
+      <td>A text response stating the movie has been removed from the user's favorites </td>
+      <td>This request will allow the user to remove specific movies from their "favoriteMovies" array</td>
+    </tr>
+    <tr>
+      <th>Remove a user</th>
+      <td>/users/:id</td>
+      <td>DELETE</td>
+      <td>N/A</td>
+      <td>A text response stating the user has been deleted </td>
+      <td>This request will allow the user to delete their user account</td>
+    </tr>
+  </table>
+
 </body>
 
 </html>
