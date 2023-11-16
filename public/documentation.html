@@ -40,7 +40,7 @@
     </tr>
     <tr>
       <th>Get data on a specific genre</th>
-      <td>/movies/genre/:genreName</td>
+      <td>/movies/genres/:genreName</td>
       <td>GET</td>
       <td>N/A</td>
       <td>A JSON object containing data on the movie genre selected</td>
@@ -60,8 +60,10 @@
       <td>POST</td>
       <td>A JSON object formatted like so:<br>
         {<br>
-          "name": <i>user's name</i><br>
-          "favoriteMovies": []<br>
+          "Username" : <i>User's Username</i><br>
+          "Password" : <i>User's Password</i><br>
+          "Email" : <i>User's Email</i><br>
+          "Birthday" : <i>User's Birthday as MM/DD/YY</i><br>
         }
       </td>
       <td>A JSON object containing the information entered, but now with a unique user id number. </td>
@@ -69,7 +71,7 @@
     </tr>
     <tr>
       <th>Add a new favorite movie</th>
-      <td>/users/:id/:movieTitle</td>
+      <td>/users/:Username/movies/:MovieID</td>
       <td>POST</td>
       <td>N/A</td>
       <td>A text response stating the movie has been added to the user's favorites </td>
@@ -77,12 +79,14 @@
     </tr>
     <tr>
       <th>Update a username</th>
-      <td>/users/:id</td>
+      <td>/users/:Username</td>
       <td>PUT</td>
       <td>A JSON object formatted like so:<br>
         {<br>
-          "name": <i>user's new username</i><br>
-          "favoriteMovies": []<br>
+          "Username" : <i>User's new Username</i><br>
+          "Password" : <i>User's Password</i><br>
+          "Email" : <i>User's Email</i><br>
+          "Birthday" : <i>User's Birthday as MM/DD/YY</i><br>
         }
       </td>
       <td>A JSON object containing their account information, but now with their updated name. </td>
@@ -90,7 +94,7 @@
     </tr>
     <tr>
       <th>Remove a favorite movie</th>
-      <td>/users/:id/:movieTitle</td>
+      <td>/users/:Username/movies/:movieID</td>
       <td>DELETE</td>
       <td>N/A</td>
       <td>A text response stating the movie has been removed from the user's favorites </td>
@@ -98,7 +102,7 @@
     </tr>
     <tr>
       <th>Remove a user</th>
-      <td>/users/:id</td>
+      <td>/users/:Username</td>
       <td>DELETE</td>
       <td>N/A</td>
       <td>A text response stating the user has been deleted </td>
