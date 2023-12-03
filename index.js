@@ -10,8 +10,8 @@ const Models = require('./models.js');
 const Movies = Models.Movie;
 const Users = Models.User;
 
-mongoose.connect('mongodb://127.0.0.1:27017/cdDB', { useNewUrlParser: true, useUnifiedTopology: true });
-
+// mongoose.connect('mongodb://127.0.0.1:27017/cdDB', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('common'));
@@ -232,7 +232,12 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!');
 });
 
-
-app.listen(8080, () => {
-  console.log('Your app is listening on port 8080.');
+const port = process.env.PORT || 8080;
+app.listen(port, '0.0.0.0',() => {
+ console.log('Listening on Port ' + port);
 });
+
+// Old Listen
+// app.listen(8080, () => {
+//   console.log('Your app is listening on port 8080.');
+// });
