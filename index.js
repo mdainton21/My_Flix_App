@@ -205,6 +205,24 @@ app.put('/users/:Username',
 
   })
 
+app.put('/movies/:MovieID/:ImagePath', passport.authenticate('jwt', { session: false }), async (req, res) => {
+    // CONDITION ENDS
+    await Movies.findOneAndUpdate({ ImagePath: req.params.ImagePath }, {
+        $set:
+        {
+          ImagePath: req.body.ImagePath
+        }
+    },
+        { new: true }) // This line makes sure that the updated document is returned
+        .then((updatedImage) => {
+            res.json(updatedImage);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send('Error: ' + err);
+        })
+});
+
 // DELETE Requests
 
 // Delete a movie from a user's favorite
