@@ -46,8 +46,7 @@ app.get('/', (req, res) => {
 });
 
 //Get Movies
-// app.get('/movies', passport.authenticate('jwt', { session: false }),
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
   Movies.find()
     .then((movies) => {
       res.status(201).json(movies);
@@ -204,24 +203,6 @@ app.put('/users/:Username',
       })
 
   })
-
-app.put('/movies/:MovieID/:ImagePath', passport.authenticate('jwt', { session: false }), async (req, res) => {
-    // CONDITION ENDS
-    await Movies.findOneAndUpdate({ ImagePath: req.params.ImagePath }, {
-        $set:
-        {
-          ImagePath: req.body.ImagePath
-        }
-    },
-        { new: true }) // This line makes sure that the updated document is returned
-        .then((updatedImage) => {
-            res.json(updatedImage);
-        })
-        .catch((err) => {
-            console.log(err);
-            res.status(500).send('Error: ' + err);
-        })
-});
 
 // DELETE Requests
 
